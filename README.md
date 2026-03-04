@@ -1,4 +1,4 @@
-# @isvalid/sdk
+# @isvalid-dev/sdk
 
 TypeScript SDK for the [isvalid.dev](https://isvalid.dev) validation API.
 
@@ -14,13 +14,13 @@ TypeScript SDK for the [isvalid.dev](https://isvalid.dev) validation API.
 ## Installation
 
 ```bash
-npm install @isvalid/sdk
+npm install @isvalid-dev/sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { createClient } from '@isvalid/sdk';
+import { createClient } from '@isvalid-dev/sdk';
 
 const iv = createClient({ apiKey: 'your-api-key' });
 
@@ -135,7 +135,7 @@ const iv = createClient({ apiKey: '...', retry: false });
 ## Error Handling
 
 ```typescript
-import { IsValidError, IsValidAuthError, IsValidRateLimitError } from '@isvalid/sdk';
+import { IsValidError, IsValidAuthError, IsValidRateLimitError } from '@isvalid-dev/sdk';
 
 try {
   await iv.email('test@example.com');
