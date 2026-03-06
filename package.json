@@ -1,6 +1,6 @@
 {
   "name": "@isvalid-dev/sdk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TypeScript SDK for the isvalid.dev validation API",
   "license": "MIT",
   "author": "isvalid.dev",

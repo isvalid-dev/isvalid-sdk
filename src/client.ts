@@ -72,13 +72,14 @@ export class HttpClient {
   }
 
   private buildUrl(path: string, params?: Record<string, string | undefined>): string {
-    const url = new URL(path, this.baseUrl);
+    let result = this.baseUrl + path;
     if (params) {
-      for (const [k, v] of Object.entries(params)) {
-        if (v !== undefined) url.searchParams.set(k, v);
+      const entries = Object.entries(params).filter((e): e is [string, string] => e[1] !== undefined);
+      if (entries.length > 0) {
+        result += '?' + entries.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join('&');
       }
     }
-    return url.toString();
+    return result;
   }
 
   private async request<T>(url: string, init: RequestInit): Promise<T> {
