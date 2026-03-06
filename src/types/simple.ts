@@ -300,7 +300,7 @@ export type AbaResponse =
   | { valid: false }
   | { valid: true; routingNumber: string; checkDigit: string };
 
-export type Iso6346Response =
+export type ContainerCodeResponse =
   | { valid: false }
   | {
       valid: true;

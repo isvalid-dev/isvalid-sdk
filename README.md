@@ -19,6 +19,8 @@ npm install @isvalid-dev/sdk
 
 ## Quick Start
 
+Get your free API key at [isvalid.dev/getting-started](https://isvalid.dev/getting-started).
+
 ```typescript
 import { createClient } from '@isvalid-dev/sdk';
 
@@ -109,7 +111,7 @@ iv.nuts(value)             iv.uuid(value, opts?)      iv.jwt(value)
 iv.vin(value)              iv.imei(value)             iv.semver(value)
 iv.color(value)            iv.boolean(value)          iv.date(value, opts?)
 iv.btcAddress(value)       iv.postalCode(value, opts?)
-iv.aba(value)              iv.iso6346(value)          iv.sscc(value)
+iv.aba(value)              iv.containerCode(value)    iv.sscc(value)
 iv.gln(value)              iv.qr(value)               iv.creditCard(number)
 ```
 

@@ -32,7 +32,7 @@ import type {
   IssnResponse, BicResponse, CusipResponse, CfiResponse, MicResponse,
   NutsResponse, UuidResponse, JwtResponse, VinResponse, ImeiResponse,
   SemverResponse, ColorResponse, BooleanResponse, DateResponse,
-  BtcAddressResponse, PostalCodeResponse, AbaResponse, Iso6346Response,
+  BtcAddressResponse, PostalCodeResponse, AbaResponse, ContainerCodeResponse,
   SsccResponse, GlnResponse, QrResponse, CreditCardResponse,
 } from './types/simple.js';
 
@@ -185,8 +185,8 @@ export class IsValid {
     return this.client.get('/v0/aba', { value });
   }
 
-  iso6346(value: string): Promise<Iso6346Response> {
-    return this.client.get('/v0/iso6346', { value });
+  containerCode(value: string): Promise<ContainerCodeResponse> {
+    return this.client.get('/v0/container-code', { value });
   }
 
   sscc(value: string): Promise<SsccResponse> {

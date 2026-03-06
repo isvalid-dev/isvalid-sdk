@@ -151,7 +151,7 @@ describe('simple endpoints', () => {
     ['btcAddress', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'],
     ['postalCode', '00-001'],
     ['aba', '021000021'],
-    ['iso6346', 'CSQU3054383'],
+    ['containerCode', 'CSQU3054383'],
     ['sscc', '106141411234567897'],
     ['gln', '0614141123452'],
     ['qr', 'https://example.com'],

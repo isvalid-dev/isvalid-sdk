@@ -5,7 +5,7 @@ export type {
   IssnResponse, BicResponse, CusipResponse, CfiResponse, MicResponse,
   NutsResponse, UuidResponse, JwtResponse, VinResponse, ImeiResponse,
   SemverResponse, ColorResponse, BooleanResponse, DateResponse,
-  BtcAddressResponse, PostalCodeResponse, AbaResponse, Iso6346Response,
+  BtcAddressResponse, PostalCodeResponse, AbaResponse, ContainerCodeResponse,
   SsccResponse, GlnResponse, QrResponse, CreditCardResponse,
 } from './simple.js';
 export type {
