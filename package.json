@@ -1,6 +1,6 @@
 {
   "name": "@isvalid-dev/sdk",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "TypeScript SDK for the isvalid.dev validation API",
   "license": "MIT",
   "author": "isvalid.dev",
@@ -36,12 +36,23 @@
     "api",
     "sdk",
     "isvalid",
+    "typescript",
     "iban",
     "lei",
     "isin",
     "vat",
     "email",
-    "typescript"
+    "eori",
+    "orcid",
+    "doi",
+    "bic",
+    "mic",
+    "swift-mt",
+    "locode",
+    "hs-code",
+    "industry",
+    "naics",
+    "nace"
   ],
   "scripts": {
     "build": "tsup",

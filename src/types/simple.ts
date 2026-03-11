@@ -334,3 +334,113 @@ export type QrResponse = {
 export type CreditCardResponse =
   | { valid: false }
   | { valid: true; type: string };
+
+export type CasResponse =
+  | { valid: false; error?: string }
+  | { valid: true; formatted: string };
+
+export type EoriResponse =
+  | { valid: false; countryCode?: string; country?: string; error?: string }
+  | {
+      valid: true;
+      countryCode: string;
+      country: string;
+      identifier: string;
+      formatted: string;
+      ec?: {
+        checked: boolean;
+        valid?: boolean;
+        statusDescr?: string | null;
+        name?: string | null;
+        street?: string | null;
+        postalCode?: string | null;
+        city?: string | null;
+        reason?: string;
+      };
+    };
+
+export type OrcidResponse =
+  | { valid: false; error?: string }
+  | {
+      valid: true;
+      formatted: string;
+      uri: string;
+      profile?: {
+        found: boolean;
+        givenNames?: string | null;
+        familyName?: string | null;
+        organization?: string | null;
+        reason?: string;
+      };
+    };
+
+export type DoiResponse =
+  | { valid: false; error?: string }
+  | {
+      valid: true;
+      doi: string;
+      prefix: string;
+      suffix: string;
+      registrantCode: string;
+      registrant?: string;
+      url: string;
+      metadata?: {
+        found: boolean;
+        title?: string | null;
+        authors?: string[] | null;
+        publisher?: string | null;
+        type?: string | null;
+        issued?: unknown;
+        reason?: string;
+      };
+    };
+
+export type BarcodeResponse =
+  | { valid: false; error?: string }
+  | {
+      valid: true;
+      type: string;
+      data: string;
+      hasCheckDigit?: boolean;
+      checkDigitValid?: boolean | null;
+      encoding?: string;
+      indicator?: string;
+      length?: number;
+    };
+
+export type Base64Response =
+  | { valid: false; error?: string }
+  | { valid: true; variant: 'standard' | 'url-safe' | 'ambiguous'; isPadded: boolean; decodedLength: number };
+
+export type EthAddressResponse =
+  | { valid: false }
+  | { valid: true; address: string; isChecksumValid: boolean };
+
+export type CronResponse =
+  | { valid: false }
+  | {
+      valid: true;
+      expression: string;
+      fields: number;
+      hasSeconds: boolean;
+      humanReadable: string | null;
+      nextRun: string;
+      nextRuns: string[];
+    };
+
+export type DomainResponse =
+  | { valid: false }
+  | {
+      valid: true;
+      domain: string;
+      tld: string;
+      sld: string | null;
+      isIDN: boolean;
+      dnsValid: boolean;
+      hasA: boolean;
+      hasAAAA: boolean;
+    };
+
+export type RegexResponse =
+  | { valid: false; error?: string }
+  | { valid: true; pattern: string; flags: string | null; namedGroups: string[] };

@@ -26,6 +26,22 @@ import { createUsNamespace } from './namespaces/us.js';
 import type { UsNamespace } from './namespaces/us.js';
 import { createGbNamespace } from './namespaces/gb.js';
 import type { GbNamespace } from './namespaces/gb.js';
+import { createHsCodeNamespace } from './namespaces/hsCode.js';
+import type { HsCodeNamespace } from './namespaces/hsCode.js';
+import { createGs1PrefixNamespace } from './namespaces/gs1Prefix.js';
+import type { Gs1PrefixNamespace } from './namespaces/gs1Prefix.js';
+import { createIndustryNamespace } from './namespaces/industry.js';
+import type { IndustryNamespace } from './namespaces/industry.js';
+import { createTimezoneNamespace } from './namespaces/timezone.js';
+import type { TimezoneNamespace } from './namespaces/timezone.js';
+import { createMimeTypeNamespace } from './namespaces/mimeType.js';
+import type { MimeTypeNamespace } from './namespaces/mimeType.js';
+import { createHttpStatusNamespace } from './namespaces/httpStatus.js';
+import type { HttpStatusNamespace } from './namespaces/httpStatus.js';
+import { createSwiftMtNamespace } from './namespaces/swiftMt.js';
+import type { SwiftMtNamespace } from './namespaces/swiftMt.js';
+import { createLocodeNamespace } from './namespaces/locode.js';
+import type { LocodeNamespace } from './namespaces/locode.js';
 import type {
   EmailResponse, IbanResponse, IsinResponse, DtiResponse, VatResponse,
   GpsResponse, PhoneResponse, UrlResponse, EanResponse, IsbnResponse,
@@ -34,6 +50,8 @@ import type {
   SemverResponse, ColorResponse, BooleanResponse, DateResponse,
   BtcAddressResponse, PostalCodeResponse, AbaResponse, ContainerCodeResponse,
   SsccResponse, GlnResponse, QrResponse, CreditCardResponse,
+  CasResponse, EoriResponse, OrcidResponse, DoiResponse, BarcodeResponse,
+  Base64Response, EthAddressResponse, CronResponse, DomainResponse, RegexResponse,
 } from './types/simple.js';
 
 export class IsValid {
@@ -52,6 +70,14 @@ export class IsValid {
   readonly in: InNamespace;
   readonly us: UsNamespace;
   readonly gb: GbNamespace;
+  readonly hsCode: HsCodeNamespace;
+  readonly gs1Prefix: Gs1PrefixNamespace;
+  readonly industry: IndustryNamespace;
+  readonly timezone: TimezoneNamespace;
+  readonly mimeType: MimeTypeNamespace;
+  readonly httpStatus: HttpStatusNamespace;
+  readonly swiftMt: SwiftMtNamespace;
+  readonly locode: LocodeNamespace;
 
   constructor(config: IsValidConfig) {
     this.client = new HttpClient(config);
@@ -69,6 +95,14 @@ export class IsValid {
     this.in = createInNamespace(this.client);
     this.us = createUsNamespace(this.client);
     this.gb = createGbNamespace(this.client);
+    this.hsCode = createHsCodeNamespace(this.client);
+    this.gs1Prefix = createGs1PrefixNamespace(this.client);
+    this.industry = createIndustryNamespace(this.client);
+    this.timezone = createTimezoneNamespace(this.client);
+    this.mimeType = createMimeTypeNamespace(this.client);
+    this.httpStatus = createHttpStatusNamespace(this.client);
+    this.swiftMt = createSwiftMtNamespace(this.client);
+    this.locode = createLocodeNamespace(this.client);
   }
 
   // --- Simple endpoints ---
@@ -204,6 +238,46 @@ export class IsValid {
   creditCard(number: string): Promise<CreditCardResponse> {
     return this.client.post('/v0/credit-card', { number });
   }
+
+  cas(value: string): Promise<CasResponse> {
+    return this.client.get('/v0/cas', { value });
+  }
+
+  eori(value: string, opts?: { check?: boolean }): Promise<EoriResponse> {
+    return this.client.get('/v0/eori', { value, check: opts?.check?.toString() });
+  }
+
+  orcid(value: string, opts?: { lookup?: boolean }): Promise<OrcidResponse> {
+    return this.client.get('/v0/orcid', { value, lookup: opts?.lookup?.toString() });
+  }
+
+  doi(value: string, opts?: { lookup?: boolean }): Promise<DoiResponse> {
+    return this.client.get('/v0/doi', { value, lookup: opts?.lookup?.toString() });
+  }
+
+  barcode(value: string, opts?: { type?: string }): Promise<BarcodeResponse> {
+    return this.client.get('/v0/barcode', { value, type: opts?.type });
+  }
+
+  base64(value: string): Promise<Base64Response> {
+    return this.client.get('/v0/base64', { value });
+  }
+
+  ethAddress(value: string): Promise<EthAddressResponse> {
+    return this.client.get('/v0/eth-address', { value });
+  }
+
+  cron(value: string): Promise<CronResponse> {
+    return this.client.get('/v0/cron', { value });
+  }
+
+  domain(value: string): Promise<DomainResponse> {
+    return this.client.get('/v0/domain', { value });
+  }
+
+  regex(pattern: string, opts?: { flags?: string }): Promise<RegexResponse> {
+    return this.client.post('/v0/regex', { pattern, flags: opts?.flags });
+  }
 }
 
 export function createClient(config: IsValidConfig): IsValid {
@@ -227,3 +301,12 @@ export type { EsNamespace } from './namespaces/es.js';
 export type { InNamespace } from './namespaces/in.js';
 export type { UsNamespace } from './namespaces/us.js';
 export type { GbNamespace } from './namespaces/gb.js';
+export type { HsCodeNamespace } from './namespaces/hsCode.js';
+export type { Gs1PrefixNamespace } from './namespaces/gs1Prefix.js';
+export type { IndustryNamespace } from './namespaces/industry.js';
+export type { TimezoneNamespace } from './namespaces/timezone.js';
+export type { MimeTypeNamespace } from './namespaces/mimeType.js';
+export type { HttpStatusNamespace } from './namespaces/httpStatus.js';
+export type { SwiftMtNamespace } from './namespaces/swiftMt.js';
+export type { LocodeNamespace } from './namespaces/locode.js';
+export type { NetPortNamespace } from './namespaces/net.js';

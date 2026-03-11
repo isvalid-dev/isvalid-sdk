@@ -62,6 +62,47 @@ const flight = await iv.iata.flight('LH1234');
 const airline = await iv.iata.airline('LH');
 const airlines = await iv.iata.airline.list();
 const airport = await iv.iata.airport('WAW');
+
+// Timezone
+const tz = await iv.timezone('Europe/Warsaw');
+// => { valid: true, timezone: 'Europe/Warsaw', utcOffset: '+01:00', abbreviation: 'CET', isDST: false }
+const timezones = await iv.timezone.list({ region: 'Europe' });
+
+// MIME Type
+const mime = await iv.mimeType('application/json');
+// => { valid: true, mime: 'application/json', type: 'application', subtype: 'json', extensions: ['json'], ... }
+const byExt = await iv.mimeType.ext('pdf');
+const mimes = await iv.mimeType.list({ type: 'image' });
+
+// HTTP Status
+const status = await iv.httpStatus('404');
+// => { valid: true, code: 404, reasonPhrase: 'Not Found', category: 'client-error' }
+const statuses = await iv.httpStatus.list();
+
+// SWIFT MT
+const mt = await iv.swiftMt('MT103');
+// => { valid: true, type: 'MT103', category: 1, group: 'Customer Payments & Cheques', description: 'Single Customer Credit Transfer' }
+const mtList = await iv.swiftMt.list({ category: 1 });
+
+// UN/LOCODE
+const locode = await iv.locode('PLWAW');
+// => { valid: true, locode: 'PLWAW', country: 'PL', name: 'Warszawa', found: true, ... }
+const locodes = await iv.locode.list({ country: 'PL' });
+
+// HS Code (Harmonized System)
+const hs = await iv.hsCode('8471');
+// => { valid: true, code: '8471', level: 'heading', description: '...', ... }
+const hsList = await iv.hsCode.list({ chapter: '84', level: 'heading' });
+
+// GS1 Prefix
+const gs1 = await iv.gs1Prefix('590');
+// => { valid: true, prefix: '590', country: 'Poland' }
+const gs1List = await iv.gs1Prefix.list();
+
+// Industry (NAICS / NACE)
+const ind = await iv.industry('5112', { system: 'naics' });
+// => { valid: true, system: 'NAICS', code: '5112', description: '...', ... }
+const indList = await iv.industry.list({ system: 'naics', level: 'sector' });
 ```
 
 ## Country-Specific Endpoints
@@ -90,6 +131,9 @@ await iv.gb.sortCode('12-34-56');
 // Network
 await iv.net.ip('192.168.1.1');
 await iv.net.mac('00:1B:44:11:3A:B7');
+await iv.net.port('443');
+// => { valid: true, port: 443, range: 'well-known', serviceName: 'HTTPS', ... }
+const ports = await iv.net.port.list();
 
 // Financial
 await iv.isin('US0378331005');
@@ -113,6 +157,10 @@ iv.color(value)            iv.boolean(value)          iv.date(value, opts?)
 iv.btcAddress(value)       iv.postalCode(value, opts?)
 iv.aba(value)              iv.containerCode(value)    iv.sscc(value)
 iv.gln(value)              iv.qr(value)               iv.creditCard(number)
+iv.cas(value)              iv.eori(value, opts?)      iv.orcid(value, opts?)
+iv.doi(value, opts?)       iv.barcode(value, opts?)   iv.base64(value)
+iv.ethAddress(value)       iv.cron(value)             iv.domain(value)
+iv.regex(pattern, opts?)
 ```
 
 ## Configuration

@@ -7,7 +7,12 @@ export type {
   SemverResponse, ColorResponse, BooleanResponse, DateResponse,
   BtcAddressResponse, PostalCodeResponse, AbaResponse, ContainerCodeResponse,
   SsccResponse, GlnResponse, QrResponse, CreditCardResponse,
+  CasResponse, EoriResponse, OrcidResponse, DoiResponse, BarcodeResponse,
+  Base64Response, EthAddressResponse, CronResponse, DomainResponse, RegexResponse,
 } from './simple.js';
+export type { HsCodeResponse, HsCodeListItem, HsCodeListResponse } from './hsCode.js';
+export type { Gs1PrefixResponse, Gs1PrefixListItem, Gs1PrefixListResponse } from './gs1Prefix.js';
+export type { IndustryResponse, IndustryListItem, IndustryListResponse } from './industry.js';
 export type {
   LeiEntity, LeiLou, LeiResponse, LeiSearchOptions, LeiSearchResult,
   LeiSearchResponse, LeiLouItem, LeiLousResponse,
@@ -18,7 +23,12 @@ export type { LanguageResponse, LanguageListItem } from './language.js';
 export type {
   IataFlightResponse, IataAirlineResponse, IataAirlineListItem, IataAirportResponse,
 } from './iata.js';
-export type { IpResponse, MacResponse } from './net.js';
+export type { IpResponse, MacResponse, NetPortResponse, NetPortListItem } from './net.js';
+export type { TimezoneResponse, TimezoneListItem } from './timezone.js';
+export type { MimeTypeResponse, MimeTypeExtResponse, MimeTypeListItem } from './mimeType.js';
+export type { HttpStatusResponse, HttpStatusListItem } from './httpStatus.js';
+export type { SwiftMtResponse, SwiftMtListItem } from './swiftMt.js';
+export type { LocodeResponse, LocodeListItem } from './locode.js';
 export type {
   PeselResponse, RegonLookup, RegonResponse, KrsAddress, KrsLookup, KrsResponse,
 } from './pl.js';

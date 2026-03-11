@@ -16,3 +16,22 @@ export type MacResponse =
       isLocal: boolean;
       isBroadcast: boolean;
     };
+
+export type NetPortResponse =
+  | { valid: false }
+  | {
+      valid: true;
+      port: number;
+      range: string;
+      wellKnown: boolean;
+      serviceName: string | null;
+      protocol: string | null;
+      description: string | null;
+    };
+
+export type NetPortListItem = {
+  port: number;
+  serviceName: string;
+  protocol: string;
+  description: string;
+};
