@@ -9,6 +9,7 @@ export type {
   SsccResponse, GlnResponse, QrResponse, CreditCardResponse,
   CasResponse, EoriResponse, OrcidResponse, DoiResponse, BarcodeResponse,
   Base64Response, EthAddressResponse, CronResponse, DomainResponse, RegexResponse,
+  DunsResponse, TimestampResponse,
 } from './simple.js';
 export type { HsCodeResponse, HsCodeListItem, HsCodeListResponse } from './hsCode.js';
 export type { Gs1PrefixResponse, Gs1PrefixListItem, Gs1PrefixListResponse } from './gs1Prefix.js';
@@ -31,6 +32,7 @@ export type { SwiftMtResponse, SwiftMtListItem } from './swiftMt.js';
 export type { LocodeResponse, LocodeListItem } from './locode.js';
 export type {
   PeselResponse, RegonLookup, RegonResponse, KrsAddress, KrsLookup, KrsResponse,
+  CeidgResponse, PkdResponse,
 } from './pl.js';
 export type { CnpjResponse, CpfResponse } from './br.js';
 export type { AbnResponse } from './au.js';

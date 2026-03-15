@@ -444,3 +444,45 @@ export type DomainResponse =
 export type RegexResponse =
   | { valid: false; error?: string }
   | { valid: true; pattern: string; flags: string | null; namedGroups: string[] };
+
+export type DunsResponse =
+  | { valid: false }
+  | {
+      valid: true;
+      formatted: string;
+      duns?: {
+        checked: boolean;
+        found?: boolean;
+        reason?: string;
+        name?: string | null;
+        countryCode?: string | null;
+        city?: string | null;
+        region?: string | null;
+        postalCode?: string | null;
+        street?: string | null;
+        isActive?: boolean | null;
+      };
+    };
+
+export type TimestampResponse =
+  | { valid: false }
+  | {
+      valid: true;
+      type: 'datetime' | 'date' | 'week' | 'ordinal' | 'duration' | 'interval';
+      date?: string;
+      time?: string;
+      utcOffset?: string | null;
+      utc?: string | null;
+      week?: string;
+      ordinal?: string;
+      years?: number;
+      months?: number;
+      weeks?: number;
+      days?: number;
+      hours?: number;
+      minutes?: number;
+      seconds?: number;
+      totalSeconds?: number;
+      start?: Record<string, unknown>;
+      end?: Record<string, unknown>;
+    };

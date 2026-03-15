@@ -1,10 +1,12 @@
 import type { HttpClient } from '../client.js';
-import type { PeselResponse, RegonResponse, KrsResponse } from '../types/pl.js';
+import type { PeselResponse, RegonResponse, KrsResponse, CeidgResponse, PkdResponse } from '../types/pl.js';
 
 export interface PlNamespace {
   pesel(value: string): Promise<PeselResponse>;
   regon(value: string, opts?: { lookup?: boolean }): Promise<RegonResponse>;
   krs(value: string, opts?: { lookup?: boolean }): Promise<KrsResponse>;
+  ceidg(value: string, opts?: { lookup?: boolean }): Promise<CeidgResponse>;
+  pkd(value: string): Promise<PkdResponse>;
 }
 
 export function createPlNamespace(client: HttpClient): PlNamespace {
@@ -21,5 +23,12 @@ export function createPlNamespace(client: HttpClient): PlNamespace {
         value,
         lookup: opts?.lookup?.toString(),
       }),
+    ceidg: (value: string, opts?) =>
+      client.get<CeidgResponse>('/v0/pl/ceidg', {
+        value,
+        lookup: opts?.lookup?.toString(),
+      }),
+    pkd: (value: string) =>
+      client.get<PkdResponse>('/v0/pl/pkd', { value }),
   };
 }

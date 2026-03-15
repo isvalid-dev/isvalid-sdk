@@ -52,6 +52,7 @@ import type {
   SsccResponse, GlnResponse, QrResponse, CreditCardResponse,
   CasResponse, EoriResponse, OrcidResponse, DoiResponse, BarcodeResponse,
   Base64Response, EthAddressResponse, CronResponse, DomainResponse, RegexResponse,
+  DunsResponse, TimestampResponse,
 } from './types/simple.js';
 
 export class IsValid {
@@ -277,6 +278,14 @@ export class IsValid {
 
   regex(pattern: string, opts?: { flags?: string }): Promise<RegexResponse> {
     return this.client.post('/v0/regex', { pattern, flags: opts?.flags });
+  }
+
+  duns(value: string, opts?: { lookup?: boolean }): Promise<DunsResponse> {
+    return this.client.get('/v0/duns', { value, lookup: opts?.lookup?.toString() });
+  }
+
+  timestamp(value: string): Promise<TimestampResponse> {
+    return this.client.get('/v0/timestamp', { value });
   }
 }
 

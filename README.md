@@ -7,7 +7,7 @@ TypeScript SDK for the [isvalid.dev](https://isvalid.dev) validation API.
 - **Zero dependencies** — native `fetch` only (Node 18+, browsers)
 - **Full TypeScript types** for every endpoint response
 - **ESM + CJS** dual export
-- **Tiny** — ~1.5 KB minified + brotli
+- **Tiny** — ~2 KB minified + brotli
 - **Automatic retry** with exponential backoff for 429/5xx
 - **Custom error classes** for auth and rate limit errors
 
@@ -112,6 +112,8 @@ const indList = await iv.industry.list({ system: 'naics', level: 'sector' });
 await iv.pl.pesel('44051401358');
 await iv.pl.regon('012345678', { lookup: true });
 await iv.pl.krs('0000123456', { lookup: true });
+await iv.pl.ceidg('5252344078', { lookup: true });
+await iv.pl.pkd('62.01.Z');
 
 // Brazil
 await iv.br.cnpj('11.222.333/0001-81');
@@ -160,7 +162,7 @@ iv.gln(value)              iv.qr(value)               iv.creditCard(number)
 iv.cas(value)              iv.eori(value, opts?)      iv.orcid(value, opts?)
 iv.doi(value, opts?)       iv.barcode(value, opts?)   iv.base64(value)
 iv.ethAddress(value)       iv.cron(value)             iv.domain(value)
-iv.regex(pattern, opts?)
+iv.regex(pattern, opts?)   iv.duns(value, opts?)       iv.timestamp(value)
 ```
 
 ## Configuration
